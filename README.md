@@ -21,7 +21,7 @@ _TBD_
 
 ```
 learning-lab/
-├── algorithms/                 # Classic algorithms & data structures (2014-2015)
+├── algorithms/                 # Classic algorithms & data structures (2014-2015, consolidated from multiple disparate repos)
 │   ├── sorting/                # QuickSort, MergeSort, HeapSort (Java, JS)
 │   ├── linked-lists/           # Linked list implementations (Java, JS)
 │   ├── stacks-queues/          # Stack, Queue, PriorityQueue (Java)
@@ -61,7 +61,7 @@ learning-lab/
         └── python-slot-machine/# Python slot machine (2023-03-20)
 ```
 
-*Dates in parentheses indicate last update of original repo before consolidation. Exception: algorithms/data structures are timeless, so those go back to 2014-2015.*
+*Dates in parentheses indicate last update of original repo before consolidation where applicable*
 
 ---
 
