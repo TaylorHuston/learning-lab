@@ -21,6 +21,15 @@ _TBD_
 
 ```
 learning-lab/
+├── algorithms/                 # Classic algorithms & data structures (2014-2015)
+│   ├── sorting/                # QuickSort, MergeSort, HeapSort (Java, JS)
+│   ├── linked-lists/           # Linked list implementations (Java, JS)
+│   ├── stacks-queues/          # Stack, Queue, PriorityQueue (Java)
+│   ├── graphs/                 # BFS, DFS, Topological, SCC (Java)
+│   ├── trees/                  # BST, Symbol tables (Java)
+│   ├── shortest-path/          # Dijkstra, Kruskal, Prim MST (Java)
+│   └── interview-prep/         # Cracking the Coding Interview solutions
+│
 ├── books/                      # Book exercises and follow-alongs
 │   ├── head-first-python/      # Head First Python exercises
 │   └── learn-enough-python/    # Learn Enough Python To Be Dangerous (2024-01-21)
@@ -52,7 +61,7 @@ learning-lab/
         └── python-slot-machine/# Python slot machine (2023-03-20)
 ```
 
-*Dates in parentheses indicate last update of original repo before consolidation.*
+*Dates in parentheses indicate last update of original repo before consolidation. Exception: algorithms/data structures are timeless, so those go back to 2014-2015.*
 
 ---
 
