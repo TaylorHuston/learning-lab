@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include 'includes.html' %}
+
+  <title>Jovian Careers</title>
+</head>
+
+<body>
+  {% include 'nav.html' %}
+  <div class="container">
+
+    <h1 class="text-center mt-2 mb-4">{{company_name}} Careers</h1>
+    <row>
+      <img class="img-fluid mx-auto d-block w-100" id="banner" src="static/banner.jpg" alt="Jovian Careers">
+    </row>
+
+    <h2 class="text-center mt-2">About Jovian</h2>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore
+      magna aliqua. Habitasse platea dictumst vestibulum rhoncus est pellentesque. Proin fermentum leo vel
+      orciporta
+      non pulvinar. Urna id volutpat lacus laoreet non. Lectus mauris ultrices eros in. Et magnis dis parturient
+      montes. Nunc consequat interdum varius sit amet mattis vulputate. At erat pellentesque adipiscing commodo.Id
+      eu
+      nisl nunc mi ipsum faucibus vitae aliquet nec. Elementum pulvinar etiam non quam lacus suspendisse. Ut eu
+      sem
+      integer vitae justo eget magna. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae
+      nunc.
+      Dui accumsan sit amet nulla facilisi morbi tempus iaculis. Eu nisl nunc mi ipsum faucibus vitae aliquet nec.
+      Aliquet sagittis id consectetur purus ut faucibus pulvinar. Amet porttitor eget dolor morbi non arcu risus
+      quis. Eget egestas purus viverra accumsan in nisl nisi scelerisque. Netus et malesuada fames ac turpis
+      egestas
+      integer eget aliquet. A erat nam at lectus. Nunc mattis enim ut tellus elementum sagittis vitae et leo.</p>
+    <h2 class="text-center mt-2">Open Positions</h2>
+    <div>
+      {% for job in jobs %}
+      {% include 'jobitem.html' %}
+      {% endfor %}
+    </div>
+  </div>
+  {% include 'footer.html' %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
