@@ -1,0 +1,81 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+    		$("#show").click(function() {
+    			$("#someDiv").show("fast");
+    		});
+    		$("#hide").click(function() {
+    			$("#someDiv").hide(1000, "swing");
+    		});
+    		$("#toggle").click(function() {
+    			$("#someDiv").toggle("slow", completion); //Toggles between hide and show, calls the completion function at end (optional)
+    		});
+
+
+    		$("#fadeIn").click(function() {
+    			$("#fadeDiv").fadeIn(1000);
+    		});
+    		$("#fadeOut").click(function() {
+    			$("#fadeDiv").fadeOut(1000);
+    		});
+    		$("#fadeTo").click(function() {
+    			$("#fadeDiv").fadeTo("slow", 0.3, completion); //Fade to %30 opacity
+    		});
+
+    		$("#slideUp").click(function() {
+    			$("#slideDiv").slideUp(1000);
+    		});
+    		$("#slideDown").click(function() {
+    			$("#slideDiv").slideDown(500);
+    		});
+    		$("#slideToggle").click(function() {
+    			$("#slideDiv").slideToggle("fast", completion);
+    		});
+
+    		$("#grow").click(function() {
+    			$("#custom").animate({
+    				width: "+=200",
+    				height: "+=200" }, 
+    				1000);
+    		})
+
+    		function completion() {
+    			console.log("Complete");
+    		}
+    	});
+    </script>
+    <style>
+    	div {
+    		width: 200px;
+    		height: 200px;
+    		background-color: blue;
+    	}
+    </style>
+</head>
+<body>
+	<h2>Show and Hide</h2>
+	<div id="someDiv"></div>
+	<button id="show">Show</button>
+	<button id="hide">Hide</button>
+	<button id="toggle">Toggle</button>
+
+	<h2>Fade</h2>
+	<div id="fadeDiv"></div>
+	<button id="fadeIn">Fade In</button>
+	<button id="fadeOut">Fade Out</button>
+	<button id="fadeTo">Fade To</button>
+
+	<h2>Fade</h2>
+	<div id="slideDiv"></div>
+	<button id="slideUp">Slide Up</button>
+	<button id="slideDown">Slide Down</button>
+	<button id="slideToggle">Slide Toggle</button>
+
+	<h2>Custom Animations</h2>
+	<div id="custom"></div>
+	<button id="grow">Grow</button>
+</body>
+</html>

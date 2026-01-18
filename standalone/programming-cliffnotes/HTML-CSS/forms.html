@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Forms</title>
+
+  <link href="forms.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+  <!--Method is how the form is processed. Action is the URL of destination of the form submission.-->
+  <form method="POST" action="http://www.somewebsite.com/orderform.aspx">
+    <label>Some Field:
+      <input type="text" id="aField" name="aField" maxlength="20" placeholder="Placeholder" />
+    </label>
+
+
+    <p>
+      <label for="aPassword">A Password</label>
+      <input type="password" id="aPassword" name="aPassword" required />
+    </p>
+
+    <label for="anEmail">An Email</label>
+    <!--Autofocus is the field where the cursor starts.-->
+    <input type="email" id="anEmail" name="anEmail" autofocus />
+
+    <p>
+      <label for="aURL">A URL</label>
+      <input type="url" id="aURL" name="aURL" />
+
+    </p>
+
+    <p>
+      <label for="aRange">Range</label>
+      <!--By default a range is between 0 and 100.-->
+      <input type="range" id="aRange" name="aRange" value="47" />
+    </p>
+
+    <p>
+      <label for="aNumber">Number</label>
+      <input type="number" id="aNumber" name="aNumber" />
+    </p>
+
+    <p>
+      <!--Use a fieldset to group items.-->
+      <fieldset>
+        <legend>A Legend</legend>
+        <input type="radio" id="radio1" name="radioOption" value="1" checked />
+        <label for="radio1">Radio 1</label>
+        <br />
+        <input type="radio" id="radio2" name="radioOption" value="2" />
+        <label for="radio2">Radio 2</label>
+        <br />
+        <input type="radio" id="radio3" name="radioOption" value="3" />
+        <label for="radio3">Radio 3</label>
+      </fieldset>
+    </p>
+
+    <p>
+      <fieldset>
+        <legend>Another Legend</legend>
+        <label for="check1">Checkbox 1</label>
+        <input type="checkbox" id="check1" name="checkOption" value="1" checked />
+        <br />
+        <label for="check2">Checkbox 2</label>
+        <input type="checkbox" id="check2" name="checkOption" value="1" />
+        <br />
+        <label for="check3">Checkbox 3</label>
+        <input type="checkbox" id="check3" name="checkOption" value="1" />
+      </fieldset>
+    </p>
+
+    <p>
+      <select name="selectMenu">
+        <option value="1">Select 1</option>
+        <option value="2">Select 2</option>
+        <option value="3">Select 3</option>
+      </select>
+    </p>
+
+    <p>
+      <select name="selectMenu2" multiple>
+        <option value="1">Select 1</option>
+        <option value="2" selected>Select 2</option>
+        <option value="3">Select 3</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="text">Text Field:</label>
+        <br />
+        <textarea id="text" name="someText" cols="50" rows="10" maxlength="1000"></textarea>
+    </p>
+
+    <p>
+      <label>Data List</label>
+        <input type="text" list="someList" />
+
+        <datalist id="someList">
+          <option label="First" value="First"></option>
+          <option label="Second" value="Second"></option>
+          <option label="Third" value="Third"></option>
+        </datalist>
+    </p>
+
+    <p>
+      <label for="someDate">Date</label>
+      <input type="date" id="someDate" name="myDate" />
+    </p>
+    
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</body>
+
+</html>

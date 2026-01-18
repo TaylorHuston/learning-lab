@@ -1,0 +1,266 @@
+<!--Some example Bootstrap syntax-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+
+
+</head>
+
+<body style="padding-top: 70px;">
+
+
+  <div class="jumbotron">
+    <div class="container">
+      Jumbotron!
+    </div>
+  </div>
+
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Some Title</a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Sign in</a></li>
+        <li><a href="#">Contact</a></li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Collapsable</a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    I'm a fixed width div
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-1">A Column</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-1">A Column</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-1">A Column</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-1">A Column</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">A Column</div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">A Column</div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-5 col-sm-push-7">First</div>
+      <div class="col-sm-5 col-sm-pull-4">Second</div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-5 col-sm-offset-1 ">First</div>
+      <div class="col-sm-5 ">Second</div>
+    </div>
+
+    <div class="row">
+      <ul class="list-unstyled">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">I'm a fluid, 100% width div</div>
+
+  <div class="container">
+    <div class="row">
+      <!--Bootstrap has 5 color defaults that can be combined with other classes; primary, success, info, warning, danger-->
+      <div class="bg-primary">Primary</div>
+      <div class="bg-success">Success</div>
+      <div class="bg-info">Info</div>
+      <div class="bg-warning">Warning</div>
+      <div class="bg-danger">Danger</div>
+
+      <!--Buttons can be styled by using the btn class, a btn-<color> class, and a btn-<size> class-->
+      <button class="btn btn-primary btn-sm">Small Primary</button>
+      <button class="btn btn-danger btn-lg">Large Danger</button>
+      <br />
+      <br />
+
+      <!--Buttons can be grouped-->
+      <div class="btn-toolbar">
+        <div class="btn-group btn-group-sm">
+          <button class="btn btn-primary">Small Primary</button>
+          <button class="btn btn-danger">Large Danger</button>
+        </div>
+      </div>
+      <br />
+      <!--links can be styled as buttons as well-->
+      <div class="btn-group-vertical btn-group-lg">
+        <a type="button" class="btn btn-primary">Small Primary</a>
+        <a type="button" class="btn btn-danger">Large Danger</a>
+      </div>
+    </div>
+
+  <!--Includes default styling for forms-->
+    <div class="row">
+      <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="telnum" class="col-xs-12 col-sm-2 control-label">Contact Tel.</label>
+            <div class="col-xs-5 col-sm-4 col-md-3">
+              <div class="input-group">
+                <div class="input-group-addon">(</div>
+                <input type="tel" class="form-control" id="areacode" name="areacode" placeholder="Area code">
+                <div class="input-group-addon">)</div>
+              </div>
+            </div>
+            <div class="col-xs-7 col-sm-6 col-md-7">
+              <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="emailid" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="checkbox col-sm-5 col-sm-offset-2">
+              <label class="checkbox-inline">
+                <input type="checkbox" name="approve" value="">
+                <strong>May we contact you?</strong>
+              </label>
+            </div>
+            <div class="col-sm-3 col-sm-offset-1">
+              <select class="form-control">
+                <option>Tel.</option>
+                <option>Email</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="feedback" class="col-sm-2 control-label">Your Feedback</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="feedback" name="feedback" rows="12"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Send Feedback</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  <!--Contains several default table styles-->
+    <div class="row">
+      <div class="col-cs-12">
+        <table class="table table-striped table-bordered table-hover table-responsive">
+          <tr>
+            <th>Table Head</th>
+            <th>Table Head</th>
+            <th>Table Head</th>
+          </tr>
+                    <td>Table Col</td>
+          <td>Table Col</td>
+          <td>Table Col</td>
+          <tr>
+            <td>Table Col</td>
+            <td>Table Col</td>
+            <td>Table Col</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  <!--Panels and wells allow for highlighting information-->
+    <div class="row">
+
+      <div class="col-xs-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel Title</h3>
+          </div>
+          <div class="panel-body">
+            Some Stuff
+          </div>
+          <div class="panel-footer">
+            Panel Footer
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="well">
+          <!--Block quotes have their own formatting, including using a footer as a citation-->
+          <blockquote>
+          <p>Blah blah blah</p>
+          <footer>Well footer</footer>
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

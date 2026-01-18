@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+  <h1>This is a Header</h1>
+
+  <div id="someParent">
+    <ul id="myList">
+      <li>List 1</li>
+      <li>List 2</li>
+      <ul>
+        <li>Sublist1</li>
+        <li>Sublist2</li>
+      </ul>
+      <li>List 3</li>
+    </ul>
+  </div>
+
+
+  <h2>Scripts</h2>
+
+  <button id="variables">variables.js</button>
+  <button id="inputOutput">inputOutput.js</button>
+  <button id="flowControl">flowControl.js</button>
+  <button id="functions">functions.js</button>
+  <button id="arrays">arrays.js</button>
+  <button id="strings">strings.js</button>
+  <button id="dates">dates.js</button>
+  <button id="objects">basicObjects.js</button>
+  <button id="dom">workingWithDom.js</button>
+  <button id="jQuery">jqstuff.js</button>
+
+  <form id="myForm" name="formName" method="post">
+    <p>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" tabindex="10" />
+    </p>
+
+    <p>
+      <label for="email">Email:</label>
+      <input type="text" value="your email" name="email" id="email" tabindex="20" />
+    </p>
+    <p>
+      <label for="myCheckbox">Checkbox:</label>
+      <input type="checkbox" name="myCheckbox" id="myCheckbox">
+    </p>
+    <p>
+      <input type="submit" name="submit" id="submitBtn" value="Submit" />
+    </p>
+
+
+  </form>
+
+  <div id="slideshow">
+    <img id="slideImage">
+  </div>
+
+  <div id="addingElements">
+    <p id="mainParagraph">Base </p>
+  </div>
+
+  <button id="clickToShow">Click to Show</button>
+  <div style="width: 300px; height: 300px;">
+    <div id="slideout" style="width: 100px; height: 100px; float: right; display: none; background-color: red;"></div>
+    <div id="fadein" style="width: 100px; height: 100px; float: leftt; display: none; background-color: blue;"></div>
+  </div>
+
+
+  <h2>Click me!</h2>
+
+  <div id="ajax"></div>
+
+  <div id="scripts">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script src="inputOutput.js"></script>
+    <script src="flowControl.js"></script>
+    <script src="functions.js"></script>
+    <script src="variables.js"></script>
+    <script src="arrays.js"></script>
+    <script src="strings.js"></script>
+    <script src="date.js"></script>
+    <script src="basicObjects.js"></script>
+    <script src="workingWithDOM.js"></script>
+
+  </div>
+
+</body>
+
+</html>

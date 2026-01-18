@@ -1,0 +1,53 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+        $("document").ready(function() {	
+        	$("#mouse").on("mouseover mouseleave", highlightFunction); //Call a handler
+            $("#mouse").on("click", function(evt) { //Inline function
+                alert("You clicked in the box");
+            });
+
+            $("#text").on("keypress", function(evt) { 
+                $("#key").text(String.fromCharCode(evt.charCode));
+            });
+
+            $("#hover").hover(highlightFunction, highlightFunction); //Shorthand for mouseover and mouseleave
+
+            $("#hover").click(function() {
+                $(this).html("Click");
+            });
+
+            $("#hover").dblclick(function() {
+                $(this).html("Double Click");
+            });
+
+            $(window).resize(function() {
+                $("#hover").html("Resize");
+            });
+        });
+        function highlightFunction(evt) {
+        	$(this).toggleClass("highlighted");
+        }
+    </script>
+    <style>
+        div {
+        	height: 400px;
+        	width: 400px;
+            border: 1px solid black;
+        }
+        .highlighted {
+        	background-color: red;
+        }
+    </style>
+</head>
+<body>
+	<div id="mouse"></div>
+    
+    <div id="hover"></div>
+
+    <p>Type below</p>
+    <input id="text" type="text" />
+    <p>Last char typed: <span id="key"></span></p>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $(document).ajaxStart(function () {
+        console.log("AJAX starting");
+      });
+
+      $(document).ajaxStop(function () {
+        console.log("AJAX request ended");
+      });
+
+      $(document).ajaxSend(function (evt, jqXHR, options) {
+        console.log("About to Send request for data...");
+      });
+
+      $(document).ajaxComplete(function (evt, jqXHR, options) {
+        console.log("Everything's finished!");
+      });
+
+      $(document).ajaxError(function (evt, jqXHR, settings, err) {
+        console.log("Hmmm. Seems like there was a problem: " + err);
+      });
+
+      $(document).ajaxSuccess(function (evt, jqXHR, options) {
+        console.log("Looks like everything worked!");
+      });
+
+      getData();
+      getShorthand();
+      getXML();
+      getJSON();
+    });
+
+    function getData() {
+      $.ajax({
+          url: "testdata.txt",
+          type: "GET",
+          dataType: "text"
+        })
+        .done(success) //What happens if call was successfull
+        .fail(error) //What happens if there was an error
+        .always(always);
+    }
+
+    function getShorthand() {
+      $.get("testdata.txt", success); //Shorthand
+      $("#results2").load("testdata.html #p2"); //Pull and append, can accept jQuery selector
+    }
+
+    function getXML() {
+      $.get("testxmldata.xml", function (result) {
+        var title = result.getElementsByTagName("title")[0];
+        var name = result.getElementsByTagName("name")[0];
+        var myString = title.firstChild.nodeValue + " by " +
+          name.firstChild.nodeValue;
+
+        $("#ajax").append(myString);
+      });
+    }
+
+    function getJSON() {
+      var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      $.getJSON(flickrAPI, { //Like get, but specifically for JSON
+        tags: "space needle",
+        tagmode: "any",
+        format: "json"
+      }, function (result) {
+        $.each(result.items, function (i, item) { //Specific to the Flicker API
+          $("<img>").attr("src", item.media.m).appendTo("#ajax").before("<br />");
+          if (i === 4) {
+            return false;
+          }
+        });
+      });
+    }
+
+    function success(result) {
+      $("#results").append(result);
+    }
+
+    function error() {
+      console.log("There was an error!");
+    }
+
+    function always() {
+      console.log("Request Complete");
+    }
+  </script>
+</head>
+
+<body>
+  <div id="results"></div>
+  <div id="results2"></div>
+  <div id="ajax"></div>
+</body>
+
+</html>
