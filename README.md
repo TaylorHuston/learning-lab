@@ -4,7 +4,7 @@
 > **Focus:** Continuous learning, architectural experiments, and technology evaluations.
 
 ## 📖 About This Repository
-This repository serves as a centralized "monorepo" for my ongoing technical research. It contains prototypes, proofs of concept (PoCs), and study notes. Tutorials I have followed along with, exercises from books, one-off experiments. Moving to consolidating them all into one place, as opposed to cluttering my GitHub with dozens of short, unfinished, unpolished projects. Embracing "learning in public." 
+This repository serves as a centralized "monorepo" for my ongoing technical research. It contains prototypes, proofs of concept (PoCs), and study notes. Tutorials I have followed along with, exercises from books, one-off experiments. Most subprojects are intentionally minimal and disposable. This is not a portfolio repository, but a workspace for hands-on learning and technical evaluation. Embracing "learning in public." Currently pulling in and consolidating older projects from my GitHub, basically putting them all under one roof instead of cluttering up my GitHub with 20 disparate "Hello World" apps.
 
 > **Note:** Projects herein range from "Hello World" syntax checks to complex architectural prototypes. Please check the individual README in each subdirectory for context and scope. Projects may be "graduated" to standalone things if they're interesting enough.
 
