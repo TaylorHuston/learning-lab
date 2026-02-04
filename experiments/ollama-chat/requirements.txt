@@ -1,0 +1,6 @@
+requests
+langchain-core
+langchain-ollama
+langchain-anthropic
+langgraph
+rich

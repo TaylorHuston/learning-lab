@@ -1,0 +1,10 @@
+__pycache__/
+workflow_runs/
+sessions/
+data.json
+*.egg-info/
+venv/
+.venv/
+_archive/
+build/
+dist/
