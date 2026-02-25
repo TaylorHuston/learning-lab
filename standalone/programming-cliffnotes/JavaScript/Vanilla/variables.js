@@ -2,12 +2,11 @@
 
 function variables() {
   //Weakly-typed
-  var a = "I am a string";
-  var b = 100;
-  var c = 100.1;
-  var d = true;
-  var e = a + " " + b; //Concatenation
-
+  let a = "I am a string";
+  let b = 100;
+  let c = 100.1;
+  let d = true;
+  let e = a + " " + b; //Concatenation
   console.log(a);
   console.log(b);
   console.log(c);
@@ -26,9 +25,9 @@ function variables() {
   console.log(b); //I am a string
 
   //Random value
-  var ran = Math.random(); //Between 0 and 1 (but not including 1)
+  let ran = Math.random(); //Between 0 and 1 (but not including 1)
 
-  var x = 1;
+  let x = 1;
 
   x++;
   console.log(x); //2
@@ -46,23 +45,32 @@ function variables() {
 
   //Math has other functions
   x = 215.67;
-  var y = Math.round(x);
-  var z = Math.floor(x);
+  let y = Math.round(x);
+  let z = Math.floor(x);
   console.log(x); //215.67
   console.log(y); //216
   console.log(z); //215
 
-  var aString = "55"; // String
+  let aString = "55"; // String
   console.log(isNaN(aString)); // is Not a Number, true
-  var aNumber = Number(aString); // Convert to number
+  let aNumber = Number(aString); // Convert to number
   console.log(isNaN(aNumber)); // is Not a Number, false
 
   console.log(Math.PI); // BRING ME SOME PIE
 
-  var name = "John";
+  let name = "John";
   console.log("Hello".concat(" ", name, "!")); // Using concat to join strings
   console.log(`Hello ${name}!`); // Using template literals to join strings
   console.log("Hello " + name + "!"); // Using + to join strings
+
+  if (true) {
+    let x = 10; // Block-scoped variable, won't interfere with the x outside the block
+    console.log(x); // 10
+    var f = 20; // Function-scoped variable, considered legacy, not really used anymore
+  }
+
+  console.log(x); // ReferenceError: x is not defined
+  console.log(f); // 20, because var is function-scoped, not block-scoped
 }
 
 variables();
