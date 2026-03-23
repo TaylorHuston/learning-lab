@@ -8,9 +8,23 @@ function arrays() {
   // Creating an array with the array literal syntax
   let bar = [1, "a", 3.5, true, 2]; // Not type specific
 
+  // "Old school" way to loop through an array
+  for (let i = 0; i < bar.length; i++) {
+    console.log(bar[i]);
+  }
+
+  // Newer way to loop through an array
+  for (let element of bar) {
+    console.log(element);
+  }
+  
+
   console.log(foo.length); // 100
   console.log(bar.length); // 5
   console.log(foo[0]); // Undefined
+  if (foo[0] === undefined) { // You can actually check for undefined
+    console.log("foo[0] is undefined");
+  }
   foo[0] = "a";
   console.log(foo[0]); // a
 

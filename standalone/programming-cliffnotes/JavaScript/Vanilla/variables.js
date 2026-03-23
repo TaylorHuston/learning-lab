@@ -71,6 +71,19 @@ function variables() {
 
   console.log(x); // ReferenceError: x is not defined
   console.log(f); // 20, because var is function-scoped, not block-scoped
+
+  var g = 1;
+  var g = 2; // No error, var can be redeclared
+
+  let h = 1;
+  //let h = 2; // SyntaxError: Identifier 'h' has already been declared
+
+  let FOO = "foo";
+  let foo = "bar"; // Different from FOO, case-sensitive
+
+  //But really you should use const unless you need to reassign the variable
+  const i = 1;
+  //i = 2; // TypeError: Assignment to constant variable.
 }
 
 variables();
