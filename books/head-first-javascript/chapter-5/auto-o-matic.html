@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-O-Matic</title>
+    <script>
+        function makeCar() {
+            let makes = ['Chevy', 'GM', 'Fiat', 'Webville Motors', 'Tucker'];
+            let models = ['Cadillac', '500', 'Bel-Air', 'Taxi', 'Torpedo'];
+            let years = [1955, 1957, 1948, 1954, 1961];
+            let colors = ['red', 'blue', 'tan', 'yellow', 'white'];
+            let convertible = [true, false];
+
+            let rand1 = Math.floor(Math.random() * makes.length);
+            let rand2 = Math.floor(Math.random() * models.length);
+            let rand3 = Math.floor(Math.random() * years.length);
+            let rand4 = Math.floor(Math.random() * colors.length);
+            let rand5 = Math.floor(Math.random() * convertible.length);
+
+            let car = {
+                make: makes[rand1],
+                model: models[rand2],
+                year: years[rand3],
+                color: colors[rand4],
+                convertible: convertible[rand5]
+            };
+            return car;
+        }
+
+        function displayCar(car) {
+            let carInfo = `Your new car is a ${car.color} ${car.year} ${car.make} ${car.model}`;
+            if (car.convertible) {
+                carInfo += ' and it is a convertible.';
+            } else {
+                carInfo += ' and it is not a convertible.';
+            }
+            console.log(carInfo);
+        }
+
+        let carToSell = makeCar();
+        displayCar(carToSell);
+    </script>
+</head>
+<body>
+    <h1>Auto-O-Matic</h1>
+</body>
+</html>
