@@ -1,30 +1,32 @@
 // Basic error handling
 
-function sqrRoot(x) {
+function squareRoot(value) {
   try {
-    if (x === "")
-      throw {
-        message: "Can't Square Root Nothing",
-      };
-    if (isNaN(x))
-      throw {
-        message: "Can't Square Root Strings",
-      };
-    if (x < 0)
-      throw {
-        message: "Sorry No Imagination",
-      };
-    return "sqrt(" + x + ") = " + Math.sqrt(x);
-  } catch (err) {
-    return err.message;
+    if (value === "") {
+      throw new Error("Cannot square root an empty value.");
+    }
+
+    const number = Number(value);
+
+    if (Number.isNaN(number)) {
+      throw new Error("Cannot square root a non-number.");
+    }
+
+    if (number < 0) {
+      throw new RangeError("Cannot square root a negative number with Math.sqrt().");
+    }
+
+    return `sqrt(${number}) = ${Math.sqrt(number)}`;
+  } catch (error) {
+    return error.message;
   }
 }
 
 function writeIt() {
-  console.log(sqrRoot("four"));
-  console.log(sqrRoot(""));
-  console.log(sqrRoot("4"));
-  console.log(sqrRoot("-4"));
+  console.log(squareRoot("four"));
+  console.log(squareRoot(""));
+  console.log(squareRoot("4"));
+  console.log(squareRoot("-4"));
 }
 
 writeIt();
