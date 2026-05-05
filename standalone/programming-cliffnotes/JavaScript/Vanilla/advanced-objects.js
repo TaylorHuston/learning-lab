@@ -1,83 +1,81 @@
-// Advanced Objects and prototypical inheritance
+// Advanced objects, prototypes, classes, and inheritance
 
-function objects() {
-  // Basic object
-  let object1 = {
-    prop1: 1,
-    method1: function () {
-      return this.prop1;
+function advancedObjects() {
+  // JavaScript objects can delegate property lookups to a prototype object.
+  const animalPrototype = {
+    speak() {
+      console.log(`${this.name} makes a sound.`);
     },
   };
 
-  console.log(object1.method1());
+  const dog = Object.create(animalPrototype);
+  dog.name = "Rover";
+  dog.speak();
 
-  // Basic inheritance
-  let object2 = Object.create(object1);
-  object2.prop1 = 2;
-  console.log(object2.method1());
+  console.log(Object.getPrototypeOf(dog) === animalPrototype); // true
+  console.log(Object.hasOwn(dog, "name")); // true
+  console.log(Object.hasOwn(dog, "speak")); // false, speak is on the prototype
 
-  // Constructor
-  function Person(n) {
-    this.name = n;
-    let privateVar = "This is private";
-    // Can declare functions within constructor, but this is not recommended, unless you need access to a private variable
-    this.speak = function () {
-      console.log("Speak");
-    };
-    // This function wouldn't work as a prototype method because it wouldn't have access to 'privateVar'
-    this.sayPrivate = function () {
-      console.log(privateVar);
-    };
+  // Constructor functions are the older way to create multiple similar objects.
+  function Person(name) {
+    this.name = name;
   }
 
-  // Set a constructor's prototype and add a method to it. Recommended way of adding methods.
-  Person.prototype = {
-    constructor: Person,
-    sayName: function () {
-      console.log(this.name);
-    },
-  };
-  Person.prototype.repeat = function (toRepeat) {
-    console.log(toRepeat);
+  // Methods on the prototype are shared by all instances.
+  Person.prototype.sayName = function () {
+    console.log(this.name);
   };
 
-  let bob = new Person("Bob");
-  bob.speak();
+  const bob = new Person("Bob");
   bob.sayName();
-  bob.repeat("hello");
-  bob.sayPrivate();
-  console.log(Object.getPrototypeOf(bob));
-  console.log(bob instanceof Person);
-  console.log(bob.constructor);
 
-  // All Objects come from inherited prototypes
-  console.log(Object.getPrototypeOf({}) == Object.prototype); // True
-  console.log(Object.getPrototypeOf(isNaN) == Function.prototype); // True
-  console.log(Object.getPrototypeOf([]) == Array.prototype); // True
+  console.log(Object.getPrototypeOf(bob) === Person.prototype); // true
+  console.log(bob instanceof Person); // true
 
-  console.log(bob.toString()); // Inherited toString function from base Object prototype
-  bob.toString = function () {
-    return this.name;
-  };
-  console.log(bob.toString()); // Call overridden toString method
+  // class syntax is the modern, common way to write constructor/prototype code.
+  // It is still based on prototypes under the hood.
+  class Player {
+    #score = 0;
 
-  // Create directly from prototype, no constructor
-  let playerPrototype = {
-    speak: function () {
-      console.log("Speak");
-    },
-  };
-  var george = Object.create(playerPrototype);
-  bob.speak();
-  george.speak();
-  console.log(bob.hasOwnProperty("speak")); // True. Has this function from the constructor
-  console.log(george.hasOwnProperty("speak")); // False. George doesn't have this function, its prototype does
+    constructor(name) {
+      this.name = name;
+    }
 
-  // Inheritance
-  function Employee(n, s) {
-    Person.call(this, n); // .call allows for 'this' to be passed as context
-    this.status = s;
+    addPoint() {
+      this.#score += 1;
+    }
+
+    describe() {
+      console.log(`${this.name} has ${this.#score} point(s).`);
+    }
   }
+
+  const taylor = new Player("Taylor");
+  taylor.addPoint();
+  taylor.describe();
+
+  // Private class fields, like #score, cannot be accessed outside the class.
+  // console.log(taylor.#score); // SyntaxError
+
+  // extends sets up prototype inheritance between classes.
+  class Employee extends Player {
+    constructor(name, role) {
+      super(name);
+      this.role = role;
+    }
+
+    describeRole() {
+      console.log(`${this.name} works as a ${this.role}.`);
+    }
+  }
+
+  const employee = new Employee("Alex", "developer");
+  employee.addPoint();
+  employee.describe();
+  employee.describeRole();
+
+  console.log(employee instanceof Employee); // true
+  console.log(employee instanceof Player); // true
 }
 
-objects();
+advancedObjects();
