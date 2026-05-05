@@ -1,7 +1,7 @@
 // Conditionals and loops
 
 function flowControl() {
-  let age = 29;
+  const age = 29;
 
   if (age > 30) {
     console.log("Damn you old");
@@ -21,11 +21,11 @@ function flowControl() {
     console.log("false"); // Won't print
   }
 
-  console.log(1 == 1); // True
-  console.log(1 == "1"); // True, type conversion
-  console.log(1 === 1); // True
-  console.log(1 === "1"); // False, strict equality
-  console.log(1 != 1); // False
+  // Prefer strict equality. Loose equality coerces types before comparing.
+  console.log(1 === 1); // true
+  console.log(1 === "1"); // false
+  console.log(1 !== 1); // false
+  console.log(1 == "1"); // true, because loose equality coerces the string
 
   console.log(Boolean("")); // False
   console.log(Boolean("non-empty")); // True
@@ -33,10 +33,10 @@ function flowControl() {
   console.log(Boolean(0)); // False
   console.log(Boolean(3)); // True
 
-  let score1 = 100;
-  let score2 = 200;
-  // Ternary      *condition* ? *result if true* : *result if false*
-  let highScore = score1 > score2 ? score1 : score2;
+  const score1 = 100;
+  const score2 = 200;
+  // Ternary: condition ? resultIfTrue : resultIfFalse
+  const highScore = score1 > score2 ? score1 : score2;
   console.log(highScore); // 200
 
   // Loops
@@ -44,14 +44,14 @@ function flowControl() {
     console.log(i);
   }
 
-  // This loop will print off odd numbers 1..15
+  // This loop prints odd numbers from 1 through 15.
   for (let i = 0; i < 5000; i++) {
-    if (i % 2 == 0) {
+    if (i % 2 === 0) {
       continue; // Move to next loop iteration
     }
     console.log(i);
-    if (i == 15) {
-      break; // End Loop
+    if (i === 15) {
+      break; // End loop
     }
   }
 
@@ -67,8 +67,8 @@ function flowControl() {
     console.log(x);
   } while (x > 0);
 
-  // Switch
-  let lunch = "Sammich";
+  // Switch statements compare cases with strict equality.
+  const lunch = "Sammich";
   switch (lunch) {
     case "Sammich":
       console.log("Sammich, like a sandwich but with 10% more redneck.");
