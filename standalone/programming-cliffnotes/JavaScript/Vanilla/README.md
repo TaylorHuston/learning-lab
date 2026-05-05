@@ -1,48 +1,58 @@
 # Vanilla JavaScript Examples
 
-This directory contains examples of core JavaScript programming concepts without any frameworks or libraries. Files have been organized by topic to make learning easier.
+This directory contains examples of core JavaScript programming concepts. Most files use vanilla JavaScript; `jq-stuff.js` is included as a legacy jQuery comparison because jQuery is still common in older projects.
 
 ## Running JavaScript Code
 
 JavaScript can be run in several ways:
 
-- **In a web browser**: Open `index.htm` in your browser and use the browser's developer console
-- **With Node.js**: Install Node.js and run:  
-  `$ node filename.js`
+- **In a web browser**: Open `index.htm` from a local web server and use the browser's developer console
+- **With Node.js**: Install Node.js and run files that do not depend on browser globals:  
+  `node filename.js`
 - **In browser console**: Copy and paste code directly into the browser's developer tools console
-- **Online editors**: Use online JavaScript playgrounds like CodePen, JSFiddle, or Repl.it
+- **Online editors**: Use online JavaScript playgrounds like CodePen, JSFiddle, or Replit
+
+Some examples depend on browser APIs such as `document`, `alert`, `prompt`, `fetch`, or jQuery. Those should be run in the browser rather than directly with Node.js.
+
+To serve this directory locally:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000/index.htm`.
 
 ## Directory Contents
 
 ### Core Concepts
 
-- **variables.js** - Variable declarations, types, and scoping
-- **strings.js** - String manipulation and methods
-- **arrays.js** - Array operations and methods
+- **variables.js** - Dynamic typing, `const`/`let`/`var`, operators, and number conversion
+- **strings.js** - String manipulation, comparison, padding, trimming, and template literals
+- **arrays.js** - Array creation, iteration, mutation, sorting, and higher-order methods
 - **math.js** - Mathematical operations and Math object
-- **date.js** - Date and time handling
-- **flow-control.js** - Conditional statements, loops, and control flow
-- **functions.js** - Function definitions, parameters, and usage patterns
-- **scope.js** - Variable scope, closures, and context
+- **date.js** - Date creation, timestamps, formatting, time zones, and mutation caveats
+- **flow-control.js** - Conditional statements, strict equality, loops, and control flow
+- **functions.js** - Function declarations, expressions, recursion, callbacks, rest parameters, and `this`
+- **scope.js** - Variable scope, shadowing, closures, and `var`/`let`/`const`
 
 ### Object-Oriented Programming
 
-- **basic-objects.js** - Object creation and basic object manipulation
-- **advanced-objects.js** - Advanced object concepts, prototypes, and inheritance
+- **basic-objects.js** - Object literals, properties, methods, getters/setters, and object identity
+- **advanced-objects.js** - Prototypes, constructor functions, classes, private fields, and inheritance
 
 ### Input/Output and DOM
 
-- **input-output.js** - User input and output methods
-- **working-with-dom.js** - DOM manipulation and event handling
-- **index.htm** - HTML file for testing DOM manipulation examples
+- **input-output.js** - Browser dialogs, console output, and click events
+- **working-with-dom.js** - DOM querying, element creation, class updates, forms, and event handling
+- **index.htm** - Browser launcher for the interactive examples
 
 ### Advanced Concepts
 
-- **ajax.js** - Asynchronous JavaScript and XMLHttpRequest
-- **json.js** - JSON parsing and manipulation
-- **error-handling.js** - Error handling and debugging techniques
-- **timers.js** - setTimeout, setInterval, and timing functions
-- **jq-stuff.js** - jQuery-related examples (if jQuery is included)
+- **ajax.js** - Asynchronous HTTP with `fetch()`
+- **json.js** - JSON strings, parsing, stringifying, limitations, and API usage
+- **error-handling.js** - `try`/`catch`, `Error`, `RangeError`, and validation
+- **timers.js** - `setTimeout`, `setInterval`, `clearTimeout`, and `clearInterval`
+- **jq-stuff.js** - Legacy jQuery patterns for comparison with modern DOM APIs
 
 ### Supporting Files
 
@@ -64,9 +74,6 @@ All modern browsers include developer tools with JavaScript consoles:
 To run JavaScript outside the browser:
 
 ```bash
-# Install Node.js (Ubuntu/Debian)
-sudo apt-get install nodejs npm
-
 # Verify installation
 node --version
 npm --version
@@ -81,8 +88,7 @@ Recommended editors for JavaScript development:
 
 - **VS Code** - Free, with excellent JavaScript support
 - **WebStorm** - Full-featured IDE
-- **Sublime Text** - Lightweight with plugins
-- **Atom** - Hackable text editor
+- **Sublime Text** - Lightweight editor with plugins
 
 ### Browser Compatibility
 
@@ -96,14 +102,15 @@ These examples use modern JavaScript features. For older browser support, consid
 Recommended order for studying these examples:
 
 1. **Start with basics**: variables.js → strings.js → arrays.js
-2. **Control flow**: flow-control.js → functions.js → scope.js
+2. **Core language flow**: flow-control.js → functions.js → scope.js
 3. **Objects**: basic-objects.js → advanced-objects.js
-4. **DOM interaction**: working-with-dom.js → input-output.js
-5. **Advanced topics**: ajax.js → json.js → error-handling.js → timers.js
+4. **Built-in APIs**: math.js → date.js → json.js
+5. **Browser interaction**: input-output.js → working-with-dom.js → timers.js → ajax.js
+6. **Legacy comparison**: jq-stuff.js
 
 ## Testing Your Code
 
-Use the browser console or Node.js to test code snippets:
+Use the browser console or Node.js to test code snippets. Use the browser for files that access the DOM or browser dialogs.
 
 ```javascript
 // Example: Test in browser console
