@@ -19,6 +19,11 @@ import App from "./App.jsx";
 // 1. Open src/examples/learningPath.js to see the prescribed concept order.
 // 2. Open each sourcePath in that list and read the examples in sequence.
 // 3. Use the live app as a quick way to run and compare each example.
+//
+// Two notes for first-time readers:
+// - <StrictMode> is a development-only helper, not a concept to study first.
+// - App.jsx is the gallery shell. You can skip it on your first pass and go
+//   straight to src/examples/learningPath.js.
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />

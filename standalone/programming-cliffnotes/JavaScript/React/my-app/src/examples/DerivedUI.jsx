@@ -123,6 +123,6 @@ const PRODUCTS = [
   { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
 ];
 
-export default function ShoppingList() {
+export default function DerivedUI() {
   return <FilterableProductTable products={PRODUCTS} />;
 }

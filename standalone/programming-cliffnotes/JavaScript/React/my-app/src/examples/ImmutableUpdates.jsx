@@ -53,7 +53,7 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
-export default function Game() {
+export default function ImmutableUpdates() {
   // history is an array of board snapshots. Each board is an array of 9 values.
   // The first snapshot is an empty board.
   const [history, setHistory] = useState([Array(9).fill(null)]);

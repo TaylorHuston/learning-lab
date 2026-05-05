@@ -9,6 +9,8 @@ import { learningPath } from "./examples/learningPath.js";
 export default function App() {
   const [activeExampleId, setActiveExampleId] = useState(learningPath[0].id);
   const activeExample = learningPath.find((example) => example.id === activeExampleId) ?? learningPath[0];
+  const activeExampleIndex = learningPath.findIndex((example) => example.id === activeExample.id);
+  const nextExample = learningPath[activeExampleIndex + 1] ?? null;
   const ActiveExampleComponent = activeExample.component;
 
   return (
@@ -48,6 +50,9 @@ export default function App() {
             <h2>{activeExample.title}</h2>
             <p>{activeExample.summary}</p>
             <p className="source-path">Read: <code>{activeExample.sourcePath}</code></p>
+            <p className="source-path">
+              Next: {nextExample ? <code>{nextExample.sourcePath}</code> : "You are at the final lesson."}
+            </p>
           </div>
 
           <div className="example-card">

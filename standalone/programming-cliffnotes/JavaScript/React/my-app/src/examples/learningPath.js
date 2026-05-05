@@ -1,15 +1,25 @@
+// Ignore the import block when reading this file.
+// The learningPath array below is the only place that defines lesson order.
+import ChildrenAndComposition from "./ChildrenAndComposition.jsx";
+import ControlledForms from "./ControlledForms.jsx";
 import Conditional from "./Conditional.jsx";
 import Counter from "./Counter.jsx";
+import DerivedUI from "./DerivedUI.jsx";
+import ImmutableUpdates from "./ImmutableUpdates.jsx";
 import IndependentState from "./IndependentState.jsx";
 import Lists from "./Lists.jsx";
+import PreservingState from "./PreservingState.jsx";
 import Profile from "./Profile.jsx";
+import PropsAndComposition from "./PropsAndComposition.jsx";
 import SharedState from "./SharedState.jsx";
-import ShoppingList from "./ShoppingList.jsx";
-import TicTacToe from "./TicTacToe.jsx";
+import EffectBasics from "./EffectBasics.jsx";
+import EffectCleanup from "./EffectCleanup.jsx";
+import RefsAndDom from "./RefsAndDom.jsx";
+import ContextBasics from "./ContextBasics.jsx";
+import CustomHooks from "./CustomHooks.jsx";
 
 // This array is the canonical reading order for the reference app.
 // The live UI uses the same list, so the app and the source code stay aligned.
-// Later phases can rename files/folders to match these concepts more directly.
 export const learningPath = [
   {
     id: "rendering-jsx",
@@ -20,8 +30,24 @@ export const learningPath = [
     component: Profile,
   },
   {
-    id: "conditional-rendering",
+    id: "props-composition",
     step: 2,
+    title: "Props and Composition",
+    sourcePath: "src/examples/PropsAndComposition.jsx",
+    summary: "Passing data into child components and reusing component structure.",
+    component: PropsAndComposition,
+  },
+  {
+    id: "children-composition",
+    step: 3,
+    title: "Children and Composition",
+    sourcePath: "src/examples/ChildrenAndComposition.jsx",
+    summary: "Using the special children prop to build wrapper components.",
+    component: ChildrenAndComposition,
+  },
+  {
+    id: "conditional-rendering",
+    step: 4,
     title: "Conditional Rendering",
     sourcePath: "src/examples/Conditional.jsx",
     summary: "Choosing what UI to render from ordinary JavaScript conditions.",
@@ -29,7 +55,7 @@ export const learningPath = [
   },
   {
     id: "lists-keys",
-    step: 3,
+    step: 5,
     title: "Lists and Keys",
     sourcePath: "src/examples/Lists.jsx",
     summary: "Rendering arrays with stable keys and item-specific styling.",
@@ -37,7 +63,7 @@ export const learningPath = [
   },
   {
     id: "events-state",
-    step: 4,
+    step: 6,
     title: "Events and State",
     sourcePath: "src/examples/Counter.jsx",
     summary: "State updates, event handlers, and React's re-render cycle.",
@@ -45,7 +71,7 @@ export const learningPath = [
   },
   {
     id: "independent-state",
-    step: 5,
+    step: 7,
     title: "Independent State",
     sourcePath: "src/examples/IndependentState.jsx",
     summary: "Two component instances, each owning its own state value.",
@@ -53,26 +79,82 @@ export const learningPath = [
   },
   {
     id: "shared-state",
-    step: 6,
+    step: 8,
     title: "Shared State",
     sourcePath: "src/examples/SharedState.jsx",
     summary: "Lifting state up so sibling components stay synchronized.",
     component: SharedState,
   },
   {
+    id: "controlled-forms",
+    step: 9,
+    title: "Controlled Forms",
+    sourcePath: "src/examples/ControlledForms.jsx",
+    summary: "Keeping form inputs in React state so UI and data stay in sync.",
+    component: ControlledForms,
+  },
+  {
     id: "derived-ui",
-    step: 7,
+    step: 10,
     title: "Derived UI",
-    sourcePath: "src/examples/ShoppingList.jsx",
+    sourcePath: "src/examples/DerivedUI.jsx",
     summary: "Filtering and grouping UI from state without duplicating data.",
-    component: ShoppingList,
+    component: DerivedUI,
   },
   {
     id: "immutable-updates",
-    step: 8,
+    step: 11,
     title: "Immutable Updates",
-    sourcePath: "src/examples/TicTacToe.jsx",
+    sourcePath: "src/examples/ImmutableUpdates.jsx",
     summary: "Immutable arrays, history state, and deriving UI from previous moves.",
-    component: TicTacToe,
+    component: ImmutableUpdates,
+  },
+  {
+    id: "preserving-resetting-state",
+    step: 12,
+    title: "Preserving and Resetting State",
+    sourcePath: "src/examples/PreservingState.jsx",
+    summary: "How component position and keys affect whether state is kept or reset.",
+    component: PreservingState,
+  },
+  {
+    id: "effects-basics",
+    step: 13,
+    title: "Effects Basics",
+    sourcePath: "src/examples/EffectBasics.jsx",
+    summary: "Running side effects after render to synchronize with external systems.",
+    component: EffectBasics,
+  },
+  {
+    id: "effect-cleanup",
+    step: 14,
+    title: "Effect Cleanup",
+    sourcePath: "src/examples/EffectCleanup.jsx",
+    summary: "Cleaning up subscriptions and timers when effects re-run or unmount.",
+    component: EffectCleanup,
+  },
+  {
+    id: "refs-dom",
+    step: 15,
+    title: "Refs and DOM Access",
+    sourcePath: "src/examples/RefsAndDom.jsx",
+    summary: "Using refs to read or control DOM nodes without triggering re-renders.",
+    component: RefsAndDom,
+  },
+  {
+    id: "context-basics",
+    step: 16,
+    title: "Context Basics",
+    sourcePath: "src/examples/ContextBasics.jsx",
+    summary: "Sharing values across a subtree without passing the same prop through every layer.",
+    component: ContextBasics,
+  },
+  {
+    id: "custom-hooks",
+    step: 17,
+    title: "Custom Hooks",
+    sourcePath: "src/examples/CustomHooks.jsx",
+    summary: "Packaging reusable hook logic into regular JavaScript functions that start with use.",
+    component: CustomHooks,
   },
 ];

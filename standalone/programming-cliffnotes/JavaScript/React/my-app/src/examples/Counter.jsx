@@ -23,7 +23,7 @@ export default function Counter() {
       </p>
 
       <div className="card">
-        {/* Event props use camelCase names and receive function references. So onClick not onclick */}
+        {/* Event prop names use camelCase, so React uses onClick instead of onclick. */}
         <button type="button" onClick={handleClick}>
           Count is {count}
         </button>
