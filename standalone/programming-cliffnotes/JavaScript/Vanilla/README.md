@@ -21,28 +21,28 @@ JavaScript can be run in several ways:
 - **arrays.js** - Array operations and methods
 - **math.js** - Mathematical operations and Math object
 - **date.js** - Date and time handling
-- **flowControl.js** - Conditional statements, loops, and control flow
+- **flow-control.js** - Conditional statements, loops, and control flow
 - **functions.js** - Function definitions, parameters, and usage patterns
 - **scope.js** - Variable scope, closures, and context
 
 ### Object-Oriented Programming
 
-- **basicObjects.js** - Object creation and basic object manipulation
-- **advancedObjects.js** - Advanced object concepts, prototypes, and inheritance
+- **basic-objects.js** - Object creation and basic object manipulation
+- **advanced-objects.js** - Advanced object concepts, prototypes, and inheritance
 
 ### Input/Output and DOM
 
-- **inputOutput.js** - User input and output methods
-- **workingWithDOM.js** - DOM manipulation and event handling
+- **input-output.js** - User input and output methods
+- **working-with-dom.js** - DOM manipulation and event handling
 - **index.htm** - HTML file for testing DOM manipulation examples
 
 ### Advanced Concepts
 
 - **ajax.js** - Asynchronous JavaScript and XMLHttpRequest
 - **json.js** - JSON parsing and manipulation
-- **errorHandling.js** - Error handling and debugging techniques
+- **error-handling.js** - Error handling and debugging techniques
 - **timers.js** - setTimeout, setInterval, and timing functions
-- **jqstuff.js** - jQuery-related examples (if jQuery is included)
+- **jq-stuff.js** - jQuery-related examples (if jQuery is included)
 
 ### Supporting Files
 
@@ -96,10 +96,10 @@ These examples use modern JavaScript features. For older browser support, consid
 Recommended order for studying these examples:
 
 1. **Start with basics**: variables.js → strings.js → arrays.js
-2. **Control flow**: flowControl.js → functions.js → scope.js
-3. **Objects**: basicObjects.js → advancedObjects.js
-4. **DOM interaction**: workingWithDOM.js → inputOutput.js
-5. **Advanced topics**: ajax.js → json.js → errorHandling.js → timers.js
+2. **Control flow**: flow-control.js → functions.js → scope.js
+3. **Objects**: basic-objects.js → advanced-objects.js
+4. **DOM interaction**: working-with-dom.js → input-output.js
+5. **Advanced topics**: ajax.js → json.js → error-handling.js → timers.js
 
 ## Testing Your Code
 
