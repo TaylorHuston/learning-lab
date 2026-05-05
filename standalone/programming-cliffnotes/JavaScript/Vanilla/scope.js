@@ -1,11 +1,10 @@
-const a = 4; // a is a global variable, it can be accessed by the functions below
+const a = 4; // Module/global scope in this script; accessible by the functions below.
 
 function foo() {
-  const b = a * 3; // b cannot be accessed outside foo function, but can be accessed by functions
-  // Defined inside foo
+  const b = a * 3; // Function-scoped to foo(), but visible to nested functions.
+
   function bar(c) {
-    const b = 2; // Another `b` variable is created inside bar function scope
-    // The changes to this new `b` variable don't affect the old `b` variable
+    const b = 2; // Shadows foo()'s b inside this function only.
     console.log(a, b, c);
   }
 
@@ -14,29 +13,32 @@ function foo() {
 
 foo(); // 4, 2, 48
 
-// Let vs Var
+// let, const, and var
 function run() {
-  var foo = "Foo"; // var is function-scoped or globally-scoped
-  let bar = "Bar"; // let is block-scoped, meaning it is only accessible within the block it is defined in
+  var foo = "Foo"; // var is function-scoped or globally-scoped.
+  let bar = "Bar"; // let is block-scoped and can be reassigned.
+  const qux = "Qux"; // const is block-scoped and cannot be reassigned.
 
-  console.log(foo, bar); // Foo Bar
+  console.log(foo, bar, qux); // Foo Bar Qux
 
   {
     var moo = "Mooo";
     let baz = "Bazz";
+    const zip = "Zip";
     console.log(moo, baz); // Mooo Bazz
-    console.log(foo, bar); // Foo Bar
+    console.log(foo, bar, qux, zip); // Foo Bar Qux Zip
   }
 
-  console.log(moo); // Mooo
-  //console.log(baz); // ReferenceError
+  console.log(moo); // Mooo, because var is scoped to run()
+  // console.log(baz); // ReferenceError: baz is block-scoped
+  // console.log(zip); // ReferenceError: zip is block-scoped
 }
 
 // Closures
 function makeCounter() {
   let count = 0;
   return function () {
-    count++;
+    count += 1;
     return count;
   };
 }
@@ -47,11 +49,11 @@ const counter2 = makeCounter();
 counter1(); // 1
 counter1(); // 2
 
-counter2(); // 1 ← separate memory!
+counter2(); // 1, separate closure memory
 
 function makeGreeter(name) {
   return function () {
-    console.log("Hello, " + name + "!");
+    console.log(`Hello, ${name}!`);
   };
 }
 
