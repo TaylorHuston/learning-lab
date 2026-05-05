@@ -1,32 +1,35 @@
 import { useState } from "react";
 
+// This example introduces immutable updates. Instead of changing an existing
+// array in place, each move creates a new board array. Keeping old arrays around
+// makes features like move history possible.
+
 function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button className="square" type="button" onClick={onSquareClick}>
       {value}
     </button>
   );
 }
 
 function Board({ xIsNext, squares, onPlay }) {
-  // This function is called when a square is clicked
   function handleClick(i) {
+    // Ignore clicks after a square is filled or after the game has a winner.
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
-    // Create a copy of the squares array to modify
-    const nextSquares = squares.slice();
+
+    // Do not mutate squares directly. Creating a new array lets React compare
+    // old and new state reliably, and it preserves old board snapshots.
+    const nextSquares = [...squares];
     nextSquares[i] = xIsNext ? "X" : "O";
     onPlay(nextSquares);
   }
 
+  // winner and status are derived from props during render. They do not need
+  // their own state because React can calculate them from squares and xIsNext.
   const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
-  }
+  const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`;
 
   return (
     <>
@@ -51,17 +54,21 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 
 export default function Game() {
-  // History is an array of arrays, where each array represents
-  // the state of the squares at a given point in time.
-  // We initialize it with one entry: an array of 9 nulls.
+  // history is an array of board snapshots. Each board is an array of 9 values.
+  // The first snapshot is an empty board.
   const [history, setHistory] = useState([Array(9).fill(null)]);
+
+  // currentMove is an index into history. It decides which snapshot is shown.
   const [currentMove, setCurrentMove] = useState(0);
+
+  // These values are derived from state. Storing them separately would create
+  // duplicate state that could get out of sync.
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
-    // When we make a new move, we discard all "future" history
-    // that would now be incorrect.
+    // If the user jumped back in time and then plays, discard the future moves
+    // before appending the new board snapshot.
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
@@ -72,15 +79,11 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
-    let description;
-    if (move > 0) {
-      description = "Go to move #" + move;
-    } else {
-      description = "Go to game start";
-    }
+    const description = move > 0 ? `Go to move #${move}` : "Go to game start";
+
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button type="button" onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
@@ -97,7 +100,7 @@ export default function Game() {
   );
 }
 
-// Brute force method to check for a winner
+// Pure helper functions are easy to test because they depend only on arguments.
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -109,8 +112,8 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+  for (const line of lines) {
+    const [a, b, c] = line;
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }

@@ -1,88 +1,30 @@
 import { useState } from "react";
 import "./App.css";
-import Conditional from "./examples/Conditional.jsx";
-import Counter from "./examples/Counter.jsx";
-import IndependentState from "./examples/IndependentState.jsx";
-import Lists from "./examples/Lists.jsx";
-import Profile from "./examples/Profile.jsx";
-import SharedState from "./examples/SharedState.jsx";
-import ShoppingList from "./examples/ShoppingList.jsx";
-import TicTacToe from "./examples/TicTacToe.jsx";
+import { learningPath } from "./examples/learningPath.js";
 
-// The gallery is data-driven: adding a new reference example should only require
-// importing the component and adding one object to this list. Keeping navigation
-// metadata beside the component makes the app easier to scan as it grows.
-const examples = [
-  {
-    id: "counter",
-    title: "Counter",
-    summary: "State updates, event handlers, and React's re-render cycle.",
-    component: Counter,
-  },
-  {
-    id: "profile",
-    title: "Profile",
-    summary: "JSX expressions, attributes, image rendering, and inline style objects.",
-    component: Profile,
-  },
-  {
-    id: "conditional",
-    title: "Conditional Rendering",
-    summary: "Choosing what UI to render from ordinary JavaScript conditions.",
-    component: Conditional,
-  },
-  {
-    id: "lists",
-    title: "Lists and Keys",
-    summary: "Rendering arrays with stable keys and item-specific styling.",
-    component: Lists,
-  },
-  {
-    id: "independent-state",
-    title: "Independent State",
-    summary: "Two component instances, each owning its own state value.",
-    component: IndependentState,
-  },
-  {
-    id: "shared-state",
-    title: "Shared State",
-    summary: "Lifting state up so sibling components stay synchronized.",
-    component: SharedState,
-  },
-  {
-    id: "shopping-list",
-    title: "Thinking in React",
-    summary: "A filterable product table built from small, focused components.",
-    component: ShoppingList,
-  },
-  {
-    id: "tic-tac-toe",
-    title: "Tic Tac Toe",
-    summary: "Immutable updates, history state, and deriving UI from previous moves.",
-    component: TicTacToe,
-  },
-];
-
+// App is the root component for this project. main.jsx starts React; App.jsx
+// describes the UI that React should render after startup. Keeping this separate
+// makes main.jsx a clean entry point and makes App.jsx the place to study app
+// composition, state, and rendering.
 export default function App() {
-  const [activeExampleId, setActiveExampleId] = useState(examples[0].id);
-  const activeExample = examples.find((example) => example.id === activeExampleId) ?? examples[0];
+  const [activeExampleId, setActiveExampleId] = useState(learningPath[0].id);
+  const activeExample = learningPath.find((example) => example.id === activeExampleId) ?? learningPath[0];
   const ActiveExampleComponent = activeExample.component;
 
   return (
     <main className="app-shell">
       <header className="hero-panel">
-        <p className="eyebrow">React reference lab</p>
-        <h1>Canonical examples for the core React mental model.</h1>
+        <p className="eyebrow">Canonical React App</p>
+        <h1>Examples for the core React mental model.</h1>
         <p className="hero-copy">
-          Pick an example to see one concept in isolation. The app shell itself is
-          also a reference: state chooses the active example, metadata drives the
-          navigation, and React renders the selected component.
+          Start in <code>src/main.jsx</code>, then follow the ordered learning path
+          through the source files. The UI mirrors that same order for quick checks.
         </p>
       </header>
 
       <section className="workspace" aria-label="React examples">
         <nav className="example-nav" aria-label="Example picker">
-          {examples.map((example) => {
+          {learningPath.map((example) => {
             const isActive = example.id === activeExample.id;
 
             return (
@@ -93,7 +35,7 @@ export default function App() {
                 onClick={() => setActiveExampleId(example.id)}
                 aria-pressed={isActive}
               >
-                <span>{example.title}</span>
+                <span>{example.step}. {example.title}</span>
                 <small>{example.summary}</small>
               </button>
             );
@@ -105,6 +47,7 @@ export default function App() {
             <p className="eyebrow">Selected example</p>
             <h2>{activeExample.title}</h2>
             <p>{activeExample.summary}</p>
+            <p className="source-path">Read: <code>{activeExample.sourcePath}</code></p>
           </div>
 
           <div className="example-card">

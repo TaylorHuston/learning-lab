@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+// This example introduces derived UI. The product list is not stored in state;
+// it is recalculated from the original products plus the current filter state.
+// In React, prefer storing the smallest amount of state needed, then derive the
+// visible UI during render.
+
 function ProductCategoryRow({ category }) {
   return (
     <tr>
@@ -9,7 +14,9 @@ function ProductCategoryRow({ category }) {
 }
 
 function ProductRow({ product }) {
-  const name = product.stocked ? product.name : <span style={{ color: "red" }}>{product.name}</span>;
+  // JSX can be assigned to variables. Here, out-of-stock products get a visual
+  // treatment without changing the product data itself.
+  const name = product.stocked ? product.name : <span style={{ color: "#fca5a5" }}>{product.name}</span>;
 
   return (
     <tr>
@@ -20,19 +27,28 @@ function ProductRow({ product }) {
 }
 
 function ProductTable({ products, filterText, inStockOnly }) {
+  // rows is derived during render. It does not need useState because it can be
+  // recomputed from props every time filterText or inStockOnly changes.
   const rows = [];
   let lastCategory = null;
+
   products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    const matchesSearch = product.name.toLowerCase().includes(filterText.toLowerCase());
+
+    if (!matchesSearch) {
       return;
     }
+
     if (inStockOnly && !product.stocked) {
       return;
     }
+
+    // Insert a category header whenever the category changes in the sorted list.
     if (product.category !== lastCategory) {
       rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+
+    rows.push(<ProductRow product={product} key={`${product.category}-${product.name}`} />);
     lastCategory = product.category;
   });
 
@@ -51,15 +67,23 @@ function ProductTable({ products, filterText, inStockOnly }) {
 
 function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) {
   return (
-    <form>
+    // The form groups related controls, but this example filters immediately on
+    // change instead of submitting to a server.
+    <form onSubmit={(event) => event.preventDefault()}>
       <input
         type="text"
         placeholder="Search..."
         value={filterText}
-        onChange={(e) => onFilterTextChange(e.target.value)}
+        // Controlled inputs get their value from React state and report changes
+        // back through onChange. The parent owns the state.
+        onChange={(event) => onFilterTextChange(event.target.value)}
       />
       <label>
-        <input type="checkbox" checked={inStockOnly} onChange={(e) => onInStockOnlyChange(e.target.checked)} />
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(event) => onInStockOnlyChange(event.target.checked)}
+        />
         Only show products in stock
       </label>
     </form>
@@ -67,10 +91,18 @@ function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyC
 }
 
 function FilterableProductTable({ products }) {
+  // These are the two true pieces of state in this example. The filtered rows are
+  // derived from these values and products, so they should not be stored separately.
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+
   return (
     <div>
+      <p>
+        Type in the search box or toggle the checkbox. React stores only the form
+        values, then derives the table rows during render.
+      </p>
+
       <SearchBar
         filterText={filterText}
         inStockOnly={inStockOnly}

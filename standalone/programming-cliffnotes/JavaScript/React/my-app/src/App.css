@@ -107,6 +107,14 @@
   color: #d1d5db;
 }
 
+.source-path {
+  font-size: 0.9rem;
+}
+
+.source-path code {
+  color: #bfdbfe;
+}
+
 .example-card {
   margin: 20px;
   padding: 20px;

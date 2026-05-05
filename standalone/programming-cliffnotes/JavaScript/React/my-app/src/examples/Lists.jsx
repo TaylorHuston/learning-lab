@@ -1,25 +1,36 @@
+// Lists in React are usually plain JavaScript arrays transformed with map().
+// The important React-specific detail is the `key` prop, which gives each
+// rendered item a stable identity between renders. It is not optional.
+
 const products = [
-  { title: "Cabbage", isFruit: false, id: 1 },
-  { title: "Garlic", isFruit: false, id: 2 },
-  { title: "Apple", isFruit: true, id: 3 },
+  { id: "cabbage", title: "Cabbage", category: "Vegetable", isFruit: false },
+  { id: "garlic", title: "Garlic", category: "Vegetable", isFruit: false },
+  { id: "apple", title: "Apple", category: "Fruit", isFruit: true },
 ];
 
 export default function Lists() {
-  // Need to assign a key prop when creating lists of elements in React
-  // so React can keep track of each element between renders.
-  // The key should be a string or number that is unique among its siblings.
-  // Here, we use the product ID, which is unique.
-  // Do not use indexes as keys if the list can be reordered or changed.
+  // map() returns a new array. Here that new array contains JSX elements.
   const listItems = products.map((product) => (
     <li
+      // key is not a normal prop your component reads. React uses it internally
+      // to match old and new list items when the list changes.
       key={product.id}
       style={{
-        color: product.isFruit ? "magenta" : "darkgreen",
+        color: product.isFruit ? "#f9a8d4" : "#86efac",
       }}
     >
-      {product.title}
+      <strong>{product.title}</strong> ({product.category})
     </li>
   ));
 
-  return <ul>{listItems}</ul>;
+  return (
+    <section>
+      <p>
+        Use stable data IDs for keys. Avoid array indexes as keys when items can
+        be inserted, removed, sorted, or filtered.
+      </p>
+
+      <ul>{listItems}</ul>
+    </section>
+  );
 }

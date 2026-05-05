@@ -1,34 +1,36 @@
 import { useState } from "react";
 
-// `export default` denotes the main component in the file.
 export default function IndependentState() {
   return (
-    <div>
-      <h2>These buttons will update independently:</h2>
-      <MyButton />
+    <section>
+      <p>
+        Rendering the same component twice creates two separate component
+        instances. Each instance gets its own state because the state belongs to
+        that position in the rendered React tree.
+      </p>
+
+      <IndependentCounter label="First counter" />
       <br />
-      <MyButton />
-    </div>
+      <IndependentCounter label="Second counter" />
+    </section>
   );
 }
 
-function MyButton() {
-  // useState is a React Hook that lets you add state to function components.
-  // Here, we declare a "count" state variable, initialized to 0.
-  // We also get a "setCount" function that lets us update the count.
-  // Calling setCount will re-render the component with the new count value.
-  // Each button will remember it's own count state.
+function IndependentCounter({ label }) {
+  // This useState call runs once for each rendered IndependentCounter instance.
+  // Clicking one button updates only that instance's count.
   const [count, setCount] = useState(0);
 
   function handleClick() {
-    alert("You clicked me!");
-    setCount(count + 1);
+    setCount((currentCount) => currentCount + 1);
   }
 
-  // className is used to apply CSS styles in React
   return (
-    <button className="purple-button" onClick={handleClick}>
-      Clicked {count} times
-    </button>
+    <div>
+      <p>{label}</p>
+      <button className="purple-button" type="button" onClick={handleClick}>
+        Clicked {count} times
+      </button>
+    </div>
   );
 }
