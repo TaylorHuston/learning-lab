@@ -1,21 +1,19 @@
-//Objects
+// Objects
 
 function objects() {
-  // Create an object
-  let person1 = {};
+  // Create an object with object literal syntax.
+  const person1 = {};
 
-  // Dot notation for setting attributes
+  // Dot notation for setting attributes.
   person1.name = "John Doe";
 
-  // Create object with pre-defined attributes
-  // Properties with non valid variable names use quotes
-  let person2 = {
+  // Properties with names that are not valid identifiers must use quotes.
+  const person2 = {
     firstName: "Jane",
     "last name": "Doe",
-    // Objects can contain other objects
     address: {
-      street: "123 main street",
-      city: "your Town",
+      street: "123 Main Street",
+      city: "Your Town",
     },
   };
 
@@ -23,141 +21,144 @@ function objects() {
   console.log(person2.firstName);
   console.log(person2["last name"]);
 
-  // Object attributes can be other objects
-  let people = {};
+  // Object attributes can be other objects.
+  const people = {};
   people.person1 = person1;
 
-  // Bracket notation
+  // Bracket notation is useful when the property name is dynamic.
   people["person2"] = person2;
 
   console.log(people["person1"].name);
-  console.log(people.person2.name);
+  console.log(people.person2.firstName);
 
   person1.name = "Jack Doe"; // Update attribute
   console.log(person1.name); // Jack Doe
   console.log(people.person1.name); // Jack Doe
-  console.log("name" in person1); // True
-  console.log("age" in person1); // False
+  console.log("name" in person1); // true, checks own and inherited properties
+  console.log(Object.hasOwn(person1, "name")); // true, checks only own properties
+  console.log("age" in person1); // false
   delete person1.name; // Remove attribute
-  console.log("name" in person1); // False
+  console.log("name" in person1); // false
+
   console.log(Object.keys(person2)); // ['firstName', 'last name', 'address']
   console.log(Object.keys(people)); // ['person1', 'person2']
-  console.log(Object.values(people)); // [ { name: 'Jack Doe' }, { firstName: 'Jane', 'last name': 'Doe', address: { street: '123 main street', city: 'your Town' } } ]
-  console.log(Object.values(person2)); // [ 'Jane', 'Doe', { street: '123 main street', city: 'your Town' } ]
-  console.log(Object.entries(person2)); // [ [ 'firstName', 'Jane' ], [ 'last name', 'Doe' ], [ 'address', { street: '123 main street', city: 'your Town' } ] ]
-  console.log(people.person2.address); // { street: '123 main street', city: 'your Town' }
+  console.log(Object.values(person2)); // ['Jane', 'Doe', { street: '123 Main Street', city: 'Your Town' }]
+  console.log(Object.entries(person2)); // [['firstName', 'Jane'], ['last name', 'Doe'], ['address', {...}]]
+  console.log(people.person2.address);
 
-  // When creating an object with a constructor
-  let phonebookEntry = new Object();
-
-  phonebookEntry.name = "Jack Huston";
-  phonebookEntry.number = "860-555-1212";
-
-  // Define a method on the object
-  phonebookEntry.phone = function () {
-    console.log("Calling " + this.name + " at " + this.number + "...");
+  // Object literals are the usual modern way to create plain objects.
+  const phonebookEntry = {
+    name: "Jack Huston",
+    number: "860-555-1212",
+    phone() {
+      console.log(`Calling ${this.name} at ${this.number}...`);
+    },
   };
 
-  // Call a method
   phonebookEntry.phone();
 
-  // Methods
-  let bob = new Object();
-  bob.setAge = function (age) {
-    // Object specific method
-    bob.age = age;
+  // Methods can read or write other properties through this.
+  const bob = {
+    setAge(age) {
+      this.age = age;
+    },
   };
   bob.setAge(20);
-
   console.log(bob.age);
 
   function setWeight(weight) {
     this.weight = weight;
   }
 
-  // Assign generic function as an object method
+  // Assign a function as an object method.
   bob.setWeight = setWeight;
   bob.setWeight(150);
-
   console.log(bob.weight);
 
-  // Object equality
-  let object1 = {
+  // Object equality compares identity, not matching contents.
+  const object1 = {
     val: 10,
   };
-  let object2 = object1;
-  let object3 = {
+  const object2 = object1;
+  const object3 = {
     val: 10,
   };
-  console.log(object1 == object2); // True
-  console.log(object1 == object3); // False
+  console.log(object1 === object2); // true, same object reference
+  console.log(object1 === object3); // false, different object references
   object1.val = 15;
   console.log(object2.val); // 15
 
-  // Bracket notation can use variables
-  let population = {};
+  // Bracket notation can use variables.
+  const population = {};
 
   function addPop(city, pop) {
     population[city] = pop;
   }
   addPop("New York", "Eleventymillion");
-  console.log(population["New York"]);
-
   addPop("Chicago", "Seventeen Thousand");
   addPop("Seattle", 12);
 
-  // Object for loop
-  for (let city in population) {
-    console.log(city + " : " + population[city]);
+  console.log(population["New York"]);
+
+  // Object.entries() iterates over an object's own enumerable properties.
+  for (const [city, pop] of Object.entries(population)) {
+    console.log(`${city}: ${pop}`);
   }
 
-  // Getters and setters. Looks like normal attributes but actually methods. Encapsulation.
-  let somePerson = {
-    mySex: "Male",
-    myAge: 25,
-    get age() {
-      return this.myAge;
+  // Getters and setters look like properties but run functions.
+  const thermostat = {
+    celsius: 20,
+    get fahrenheit() {
+      return this.celsius * 9 / 5 + 32;
     },
-    set age(newAge) {
-      this.myAge = newAge;
+    set fahrenheit(value) {
+      this.celsius = (value - 32) * 5 / 9;
     },
   };
-  console.log(somePerson.age);
-  somePerson.age = 30;
-  console.log(somePerson.age);
+  console.log(thermostat.fahrenheit);
+  thermostat.fahrenheit = 68;
+  console.log(thermostat.celsius);
 
-  // Add getter or setter to existing object
-  Object.defineProperty(somePerson, "sex", {
-    get: function () {
-      return this.mySex;
+  // Add a getter or setter to an existing object.
+  Object.defineProperty(thermostat, "kelvin", {
+    get() {
+      return this.celsius + 273.15;
     },
-    set: function (newSex) {
-      this.mySex = newSex;
+    set(value) {
+      this.celsius = value - 273.15;
     },
   });
-  console.log(somePerson.sex);
-  somePerson.sex = "transgender";
-  console.log(somePerson.sex);
+  console.log(thermostat.kelvin);
+  thermostat.kelvin = 300;
+  console.log(thermostat.celsius);
 
-  // Primitives are passed by value, objects are passed by reference
+  // Primitives are passed by value.
   function passByValue(x) {
     x = 5;
   }
-  let a = 10;
+  const a = 10;
   passByValue(a);
   console.log(a); // 10
 
-  function passByReference(obj) {
+  // Object references are passed by value. A function can mutate the object
+  // through that reference, but it cannot reassign the caller's variable.
+  function mutateObject(obj) {
     obj.val = 5;
   }
-  let myObj = {
+  const myObj = {
     val: 10,
   };
-  passByReference(myObj);
+  mutateObject(myObj);
   console.log(myObj.val); // 5
 
+  function reassignObject(obj) {
+    obj = { val: 99 };
+  }
+  reassignObject(myObj);
+  console.log(myObj.val); // 5
 
-  let chevy = {
+  // Object with properties and methods.
+  const chevy = {
     make: "Chevy",
     model: "Bel Air",
     year: 1957,
@@ -166,24 +167,28 @@ function objects() {
     convertible: false,
     mileage: 1021,
     started: false,
-    start: function () {
-        this.started = true;
+    start() {
+      this.started = true;
     },
-    stop: function () {
-        this.started = false;
+    stop() {
+      this.started = false;
     },
-    drive: function () {
-        if (this.started) {
-            alert("Vroom, vroom!");
-        } else {
-            alert("You need to start the car first.");
-        }
-    }
-  }
+    drive() {
+      if (this.started) {
+        console.log("Vroom, vroom!");
+      } else {
+        console.log("You need to start the car first.");
+      }
+    },
+  };
 
   chevy.start();
   chevy.drive();
 
+  // Loop through object properties.
+  for (const [prop, value] of Object.entries(chevy)) {
+    console.log(`${prop}: ${value}`);
+  }
 }
 
 objects();
