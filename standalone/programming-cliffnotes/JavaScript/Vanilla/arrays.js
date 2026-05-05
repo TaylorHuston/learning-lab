@@ -126,6 +126,35 @@ function arrays() {
   console.log(twoD[0][0]); // 1
   console.log(twoD[1][1]); // 4
 
+  // Destructuring pulls values out of an array by position.
+  const colors = ["red", "green", "blue"];
+  const [firstColor, secondColor] = colors;
+  console.log(firstColor); // red
+  console.log(secondColor); // green
+
+  // You can skip positions with an extra comma.
+  const [, , thirdColor] = colors;
+  console.log(thirdColor); // blue
+
+  // Rest syntax collects the remaining values into a new array.
+  const [favoriteColor, ...otherColors] = colors;
+  console.log(favoriteColor); // red
+  console.log(otherColors); // ["green", "blue"]
+
+  // Spread syntax expands an array into another array.
+  const numbers = [1, 2, 3];
+  const moreNumbers = [4, 5];
+  const numbersCopy = [...numbers];
+  const combinedNumbers = [...numbers, ...moreNumbers];
+  console.log(numbersCopy); // [1, 2, 3]
+  console.log(combinedNumbers); // [1, 2, 3, 4, 5]
+
+  // Spread makes a shallow copy. Nested objects are still shared.
+  const nested = [{ name: "Taylor" }];
+  const nestedCopy = [...nested];
+  nestedCopy[0].name = "Alex";
+  console.log(nested[0].name); // Alex
+
   // Join converts array into string with a separator
   console.log(rand.join(" and ")); // 1 and 2 and 4 and 8 and 9
 }
