@@ -1,12 +1,16 @@
 // Array syntax
 
 function arrays() {
-  console.log("test");
-  // Creating an array with the constructor to set initial size (though arrays in JS are dynamic anyway)
-  let foo = new Array(100);
+  // Creating an array with the array literal syntax
+  const foo = [];
 
   // Creating an array with the array literal syntax
   let bar = [1, "a", 3.5, true, 2]; // Not type specific
+
+  // The Array constructor can create sparse arrays with empty slots.
+  const sparse = new Array(100);
+  console.log(sparse.length); // 100
+  console.log(sparse[0]); // undefined, but the slot is empty
 
   // "Old school" way to loop through an array
   for (let i = 0; i < bar.length; i++) {
@@ -17,11 +21,10 @@ function arrays() {
   for (let element of bar) {
     console.log(element);
   }
-  
 
-  console.log(foo.length); // 100
+  console.log(foo.length); // 0
   console.log(bar.length); // 5
-  console.log(foo[0]); // Undefined
+  console.log(foo[0]); // undefined
   if (foo[0] === undefined) { // You can actually check for undefined
     console.log("foo[0] is undefined");
   }
@@ -38,7 +41,7 @@ function arrays() {
 
   // Pop removes from end
   console.log(foo.pop()); // z
-  console.log(foo.length); // 100
+  console.log(foo.length); // 1
 
   // Shift removes from front
   console.log(bar.shift()); // 1
@@ -46,7 +49,7 @@ function arrays() {
   bar.unshift("x");
   console.log(bar[0]); // x
 
-  var fub = new Array();
+  const fub = [];
   console.log(fub.length);
 
   fub[4] = 4;
@@ -60,14 +63,24 @@ function arrays() {
   console.log(rand); // [3, 8, 9, 5, 3, 1]
   rand.sort(); // Sorts the array in place, but sorts as strings by default
   console.log(rand); // [1, 3, 3, 5, 8, 9]
+
+  const sortExample = [1, 10, 2, 21];
+  console.log(sortExample.toSorted()); // [1, 10, 2, 21], string-based order
+  console.log(sortExample.toSorted((a, b) => a - b)); // [1, 2, 10, 21]
+
   // Slice returns a new array with elements from start to end (not including end)
   console.log(rand.slice(1, 4)); // [3, 3, 5]
   console.log(rand.slice(1)); // [3, 3, 5, 8, 9] - from index 1 to end
   console.log(rand.slice(-3)); // [5, 8, 9] - from the end
-  console.log(rand.splice(1, 3)); // [3, 3, 5] - removes elements from index 1 to index 3 (not including index 3) and returns them
+  console.log(rand.splice(1, 3)); // [3, 3, 5] - removes 3 elements starting at index 1 and returns them
   console.log(rand); // [1, 8, 9] - original array modified
   rand.splice(1, 0, 2, 4); // Inserts 2 and 4 at index 1 without removing any elements
   console.log(rand); // [1, 2, 4, 8, 9] - original array modified
+
+  // Some array methods mutate the original array; others return a new array.
+  console.log(rand.toReversed()); // [9, 8, 4, 2, 1] - new array
+  console.log(rand); // [1, 2, 4, 8, 9] - original array unchanged
+  console.log(rand.toSpliced(1, 2)); // [1, 8, 9] - new array
 
   let sum = 0;
   rand.forEach(function (someVal) {
@@ -78,16 +91,12 @@ function arrays() {
 
   // Use filter to exclude certain elements
   console.log(
-    rand.filter(function (val) {
-      return val % 2 == 0;
-    })
+    rand.filter((val) => val % 2 === 0)
   );
 
   // Use map to apply a function to each element of an array and build a NEW array from the results
   console.log(
-    rand.map(function (val) {
-      return val * 2;
-    })
+    rand.map((val) => val * 2)
   );
 
   // Reduce returns a single value based on a function ran on each array element in order. Internal logic looks something like
@@ -100,20 +109,12 @@ function arrays() {
 
   // Use reduce to combine all elements
   console.log(
-    rand.reduce(function (x, y) {
-      return x + y;
-    })
+    rand.reduce((sum, val) => sum + val, 0)
   );
 
   // Use reduce to find smallest element
   console.log(
-    rand.reduce(function (x, y) {
-      if (x < y) {
-        return x;
-      } else {
-        return y;
-      }
-    })
+    rand.reduce((smallest, val) => (smallest < val ? smallest : val))
   );
 
   // 2D array
@@ -126,7 +127,7 @@ function arrays() {
   console.log(twoD[1][1]); // 4
 
   // Join converts array into string with a separator
-  console.log(rand.join(" and ")); // 1 and 3 and 3 and 5 and 8 and 9
+  console.log(rand.join(" and ")); // 1 and 2 and 4 and 8 and 9
 }
 
 arrays();
