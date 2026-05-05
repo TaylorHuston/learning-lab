@@ -1,85 +1,93 @@
-//Syntax that targets the DOM
-var domButton = document.getElementById("dom");
+// Syntax that targets the DOM
+
+const domButton = document.getElementById("dom");
 
 function dom() {
-  // Grab an element by it's ID
-  var myElement = document.getElementById("someParent");
-  //Return the 'type' of node
-  //1: Element
-  //2: Attribute
-  //3: Text
-  console.log(myElement.nodeType); //1
+  // Grab an element by id. querySelector("#someParent") would also work.
+  const myElement = document.getElementById("someParent");
+
+  if (!myElement) {
+    console.error("#someParent was not found");
+    return;
+  }
+
+  // Return the node type.
+  // 1: Element
+  // 2: Attribute
+  // 3: Text
+  console.log(myElement.nodeType); // 1
 
   console.log(myElement.innerHTML);
 
-  // NodeList of any children nodes
+  // childNodes includes text nodes; children includes only element nodes.
   console.log(myElement.childNodes.length);
+  console.log(myElement.children.length);
 
-  // Grab a NodeList of all elements by tag
-  var myLists = document.getElementsByTagName("li");
+  // Grab a NodeList of all elements by tag.
+  const myLists = document.querySelectorAll("li");
   console.log(myLists.length);
 
-  // Only li's inside of 'someParent' div
-  var someLists = myElement.getElementsByTagName("li");
+  // Only li elements inside #someParent.
+  const someLists = myElement.querySelectorAll("li");
   console.log(someLists.length);
 
-  // You can get and set attributes on elements
+  // You can get and set attributes on elements.
   myElement.setAttribute("class", "someClass");
-  myElement.setAttribute("align", "left");
   console.log(myElement.getAttribute("class"));
 
-  //Add a class
-  myElement.className = "someOtherClass";
-  console.log(myElement.getAttribute("class"));
+  // classList is usually better than replacing the whole className string.
+  myElement.classList.add("someOtherClass");
+  console.log(myElement.className);
 
-  //Create and append elements
-  var newDiv = document.createElement("div");
-  var newText = document.createTextNode("I'm a generated DIV");
-  newDiv.appendChild(newText);
-  myElement.appendChild(newDiv);
+  // Create and append elements.
+  const newDiv = document.createElement("div");
+  newDiv.textContent = "I'm a generated DIV";
+  myElement.append(newDiv);
 
-  //Editing CSS
-
-  //Add style directly
+  // Add styles directly. For larger styling changes, prefer CSS classes.
   myElement.style.backgroundColor = "green";
 
-  //Working with forms
+  // Working with forms.
+  const emailField = document.getElementById("email");
 
-  //Grab a soecific field
-  var emailField = document.getElementById("email");
+  if (emailField) {
+    emailField.addEventListener("focus", function () {
+      if (emailField.value === "your email") {
+        emailField.value = "";
+      }
+    });
 
-  //When the user clicks or tabs into field
-  emailField.onfocus = function () {
-    if (emailField.value == "your email") {
-      emailField.value = "";
-    }
-  };
+    emailField.addEventListener("blur", function () {
+      if (emailField.value === "") {
+        emailField.value = "your email";
+      }
+    });
+  }
 
-  //When the user clicks or tabs out of the field
-  emailField.onblur = function () {
-    if (emailField.value == "") {
-      emailField.value = "your email";
-    }
-  };
+  const myForm = document.getElementById("myForm");
 
-  var myForm = document.getElementById("myForm");
+  if (myForm) {
+    myForm.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  //Check if a checkbox is checked when 'submitting' form
-  myForm.onsubmit = function () {
-    var isChecked = document.getElementById("myCheckbox");
-    if (isChecked) {
-      alert("The checkbox is checked");
-    } else {
-      alert("The checkbox isn't checked");
-    }
-    return false; //Prevents the form from actually submitting
-  };
+      const checkbox = document.getElementById("myCheckbox");
+      if (checkbox && checkbox.checked) {
+        console.log("The checkbox is checked");
+      } else {
+        console.log("The checkbox isn't checked");
+      }
+    });
+  }
 
   const button = document.getElementById("my-button");
 
-  button.addEventListener("click", function () {
-    alert("You clicked me!");
-  });
+  if (button) {
+    button.addEventListener("click", function () {
+      console.log("You clicked me!");
+    });
+  }
 }
 
-domButton.onclick = dom;
+if (domButton) {
+  domButton.addEventListener("click", dom);
+}
