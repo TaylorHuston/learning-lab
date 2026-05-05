@@ -138,6 +138,52 @@ function objects() {
   console.log(somePerson.sex);
   somePerson.sex = "transgender";
   console.log(somePerson.sex);
+
+  // Primitives are passed by value, objects are passed by reference
+  function passByValue(x) {
+    x = 5;
+  }
+  let a = 10;
+  passByValue(a);
+  console.log(a); // 10
+
+  function passByReference(obj) {
+    obj.val = 5;
+  }
+  let myObj = {
+    val: 10,
+  };
+  passByReference(myObj);
+  console.log(myObj.val); // 5
+
+
+  let chevy = {
+    make: "Chevy",
+    model: "Bel Air",
+    year: 1957,
+    color: "red",
+    passengers: 2,
+    convertible: false,
+    mileage: 1021,
+    started: false,
+    start: function () {
+        this.started = true;
+    },
+    stop: function () {
+        this.started = false;
+    },
+    drive: function () {
+        if (this.started) {
+            alert("Vroom, vroom!");
+        } else {
+            alert("You need to start the car first.");
+        }
+    }
+  }
+
+  chevy.start();
+  chevy.drive();
+
 }
 
 objects();
