@@ -8,9 +8,12 @@ import DerivedUI from "./DerivedUI.jsx";
 import ImmutableUpdates from "./ImmutableUpdates.jsx";
 import IndependentState from "./IndependentState.jsx";
 import Lists from "./Lists.jsx";
+import MultiStepForm from "./MultiStepForm.jsx";
+import OptimisticUI from "./OptimisticUI.jsx";
 import PreservingState from "./PreservingState.jsx";
 import Profile from "./Profile.jsx";
 import PropsAndComposition from "./PropsAndComposition.jsx";
+import ReducerStateFlow from "./ReducerStateFlow.jsx";
 import SharedState from "./SharedState.jsx";
 import EffectBasics from "./EffectBasics.jsx";
 import EffectCleanup from "./EffectCleanup.jsx";
@@ -94,8 +97,24 @@ export const learningPath = [
     component: ControlledForms,
   },
   {
-    id: "derived-ui",
+    id: "reducer-state-flow",
     step: 10,
+    title: "Reducer-Based State Flow",
+    sourcePath: "src/examples/ReducerStateFlow.jsx",
+    summary: "Letting multiple children dispatch actions back to one parent reducer.",
+    component: ReducerStateFlow,
+  },
+  {
+    id: "multi-step-form",
+    step: 11,
+    title: "Multi-Step Form",
+    sourcePath: "src/examples/MultiStepForm.jsx",
+    summary: "Coordinating several child steps while the parent owns the full draft.",
+    component: MultiStepForm,
+  },
+  {
+    id: "derived-ui",
+    step: 12,
     title: "Derived UI",
     sourcePath: "src/examples/DerivedUI.jsx",
     summary: "Filtering and grouping UI from state without duplicating data.",
@@ -103,7 +122,7 @@ export const learningPath = [
   },
   {
     id: "immutable-updates",
-    step: 11,
+    step: 13,
     title: "Immutable Updates",
     sourcePath: "src/examples/ImmutableUpdates.jsx",
     summary: "Immutable arrays, history state, and deriving UI from previous moves.",
@@ -111,7 +130,7 @@ export const learningPath = [
   },
   {
     id: "preserving-resetting-state",
-    step: 12,
+    step: 14,
     title: "Preserving and Resetting State",
     sourcePath: "src/examples/PreservingState.jsx",
     summary: "How component position and keys affect whether state is kept or reset.",
@@ -119,7 +138,7 @@ export const learningPath = [
   },
   {
     id: "effects-basics",
-    step: 13,
+    step: 15,
     title: "Effects Basics",
     sourcePath: "src/examples/EffectBasics.jsx",
     summary: "Running side effects after render to synchronize with external systems.",
@@ -127,15 +146,23 @@ export const learningPath = [
   },
   {
     id: "effect-cleanup",
-    step: 14,
+    step: 16,
     title: "Effect Cleanup",
     sourcePath: "src/examples/EffectCleanup.jsx",
     summary: "Cleaning up subscriptions and timers when effects re-run or unmount.",
     component: EffectCleanup,
   },
   {
+    id: "optimistic-ui",
+    step: 17,
+    title: "Optimistic UI",
+    sourcePath: "src/examples/OptimisticUI.jsx",
+    summary: "Showing an immediate UI change, then confirming or rolling it back after async work.",
+    component: OptimisticUI,
+  },
+  {
     id: "refs-dom",
-    step: 15,
+    step: 18,
     title: "Refs and DOM Access",
     sourcePath: "src/examples/RefsAndDom.jsx",
     summary: "Using refs to read or control DOM nodes without triggering re-renders.",
@@ -143,7 +170,7 @@ export const learningPath = [
   },
   {
     id: "context-basics",
-    step: 16,
+    step: 19,
     title: "Context Basics",
     sourcePath: "src/examples/ContextBasics.jsx",
     summary: "Sharing values across a subtree without passing the same prop through every layer.",
@@ -151,7 +178,7 @@ export const learningPath = [
   },
   {
     id: "custom-hooks",
-    step: 17,
+    step: 20,
     title: "Custom Hooks",
     sourcePath: "src/examples/CustomHooks.jsx",
     summary: "Packaging reusable hook logic into regular JavaScript functions that start with use.",

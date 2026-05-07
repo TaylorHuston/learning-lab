@@ -45,11 +45,14 @@ This table matches the intended learning order from `src/examples/learningPath.j
 | `src/examples/IndependentState.jsx` | Separate component instances owning separate state. |
 | `src/examples/SharedState.jsx` | Lifting state up and passing state through props. |
 | `src/examples/ControlledForms.jsx` | Controlled inputs where React state is the source of truth. |
+| `src/examples/ReducerStateFlow.jsx` | Multiple children dispatching actions back to one parent reducer. |
+| `src/examples/MultiStepForm.jsx` | Parent-owned draft state coordinated across several child steps. |
 | `src/examples/DerivedUI.jsx` | Derived UI: filtering, component decomposition, and recalculating visible rows from state. |
 | `src/examples/ImmutableUpdates.jsx` | Immutable updates: history state and deriving the current board from past moves. |
 | `src/examples/PreservingState.jsx` | How component position and keys affect whether state is preserved or reset. |
 | `src/examples/EffectBasics.jsx` | Running side effects after render to synchronize with something outside React. |
 | `src/examples/EffectCleanup.jsx` | Cleaning up timers or subscriptions when an effect re-runs or unmounts. |
+| `src/examples/OptimisticUI.jsx` | Immediate UI updates that later confirm or roll back after async work. |
 | `src/examples/RefsAndDom.jsx` | Using refs to hold mutable values and interact with DOM nodes directly. |
 | `src/examples/ContextBasics.jsx` | Sharing values across a subtree without prop drilling through every layer. |
 | `src/examples/CustomHooks.jsx` | Extracting reusable stateful logic into functions that use Hooks. |
@@ -57,6 +60,10 @@ This table matches the intended learning order from `src/examples/learningPath.j
 ## Start Here
 
 Read the app in this order:
+
+Steps 12-13 extend controlled forms into parent-coordinated workflows. Step 19
+returns to workflows after the effects lessons, using an async optimistic update
+flow that is intentionally more advanced.
 
 1. `src/main.jsx`
 2. `src/examples/learningPath.js`
@@ -69,14 +76,17 @@ Read the app in this order:
 9. `src/examples/IndependentState.jsx`
 10. `src/examples/SharedState.jsx`
 11. `src/examples/ControlledForms.jsx`
-12. `src/examples/DerivedUI.jsx`
-13. `src/examples/ImmutableUpdates.jsx`
-14. `src/examples/PreservingState.jsx`
-15. `src/examples/EffectBasics.jsx`
-16. `src/examples/EffectCleanup.jsx`
-17. `src/examples/RefsAndDom.jsx`
-18. `src/examples/ContextBasics.jsx`
-19. `src/examples/CustomHooks.jsx`
+12. `src/examples/ReducerStateFlow.jsx`
+13. `src/examples/MultiStepForm.jsx`
+14. `src/examples/DerivedUI.jsx`
+15. `src/examples/ImmutableUpdates.jsx`
+16. `src/examples/PreservingState.jsx`
+17. `src/examples/EffectBasics.jsx`
+18. `src/examples/EffectCleanup.jsx`
+19. `src/examples/OptimisticUI.jsx`
+20. `src/examples/RefsAndDom.jsx`
+21. `src/examples/ContextBasics.jsx`
+22. `src/examples/CustomHooks.jsx`
 
 The live app mirrors that same order so you can compare the code and behavior side by side.
 `src/App.jsx` powers that gallery, but it is not part of the first-pass lesson sequence.
