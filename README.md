@@ -65,6 +65,15 @@ learning-lab/
 
 ---
 
+## Naming conventions:
+_Since this repo will contain many different languages, the naming convention is currently very inconsistent, but this is what I am going to trend towards over time._
+
+Use lowercase kebab-case for all top-level directories, workspace names, package names, documentation files, scripts, and general-purpose files.
+
+Inside language-specific projects, follow the idiomatic convention of that language or framework, preferring lowercase kebab-case if there are no strong conventions otherwise.
+
+Do not create paths that differ only by case.
+
 ## ⚖️ License & Disclaimer
 Unless otherwise noted, code in this repository is available under the MIT License.
 *Note: Some sub-directories may be based on tutorials or external courseware. In those cases, the original author is credited in the respective README.*

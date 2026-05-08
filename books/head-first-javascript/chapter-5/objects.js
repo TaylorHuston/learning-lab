@@ -7,13 +7,13 @@ let chevy = {
     convertible: false,
     mileage: 1021,
     started: false,
-    start: function () {
+    start () {
         this.started = true;
     },
-    stop: function () {
+    stop() {
         this.started = false;
     },
-    drive: function () {
+    drive() {
         if (this.started) {
             alert("Vroom, vroom!");
         } else {
@@ -36,6 +36,10 @@ console.log(chevy.tires);
 delete chevy.tires;
 
 console.log(chevy.tires); // undefined
+
+for (let prop in chevy) {
+    console.log(prop + ": " + chevy[prop]);
+}
 
 let taxi = {
     make: "Webville Motors",
