@@ -79,6 +79,23 @@ function flowControl() {
     default:
       console.log("Not hungry?");
   }
+
+  // Truthy and Falsey
+  const truthyValues = ["non-empty string", 1, true, {}, []]; // Empty objects and arrays are truthy
+  const falseyValues = ["", 0, null, undefined, false, NaN];
+
+  for (const value of truthyValues) {
+    if (value) {
+      console.log(`${value} is truthy`);
+    }
+  }
+
+  for (const value of falseyValues) {
+    if (!value) {
+      console.log(`${value} is falsey`);
+    }
+  }
+
 }
 
 flowControl();
