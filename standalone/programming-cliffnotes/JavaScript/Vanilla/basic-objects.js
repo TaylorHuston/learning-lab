@@ -189,6 +189,13 @@ function objects() {
   for (const [prop, value] of Object.entries(chevy)) {
     console.log(`${prop}: ${value}`);
   }
+
+  // Object comparison by reference.
+  const obj1 = { val: 1 };
+  const obj2 = { val: 1 };
+  const obj3 = obj1;
+  console.log(obj1 === obj2); // false, different objects
+  console.log(obj1 === obj3); // true, same reference
 }
 
 objects();
