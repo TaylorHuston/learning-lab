@@ -18,9 +18,16 @@ function strings() {
   console.log(alpha.endsWith("xyz")); // true
   console.log(alpha.charAt(11)); // l
   console.log(alpha[11]); // l
-  console.log(alpha.toUpperCase());
+  console.log(alpha.toUpperCase()); //ABCDEFGHIJKLMNOPQRSTUVWXYZ
   console.log(alpha.slice(12, 18)); // From position 12 through 17; does not include 18
   console.log(alpha.replace("lmnop", "ponml"));
+  console.log(alpha.substring(12, 18)); // mnopqr
+
+  const sentence = "JavaScript is Awesome! JavaScript is fun!";
+  const modifiedSentence = sentence.replace("JavaScript","JS");
+  console.log(modifiedSentence); // "JS is Awesome! JavaScript is fun!" Replace only the first occurrence
+
+
 
   const phrase = "This is a phrase";
   const words = phrase.split(" "); // Splits at spaces into an array
@@ -45,7 +52,8 @@ function strings() {
   console.log(myString);
 
   const name = "Taylor";
-  console.log(`Hello, ${name}!`); // Template literals interpolate values
+  const age = 30;
+  console.log(`Hello, ${name}! You are ${age} years old.`); // Template literals interpolate values
 }
 
 strings();
