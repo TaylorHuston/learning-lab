@@ -91,6 +91,64 @@ function variables() {
   // Prefer const unless you need to reassign the variable.
   const i = 1;
   // i = 2; // TypeError: Assignment to constant variable.
+
+  
+  // You can check for undefined
+  let q;
+  if (q == undefined) {
+    console.log("q is undefined");
+    console.log(typeof q);
+  }
+
+  // null is essentially the same as undefined, but common practice is to use null for objects, undefined for simple variables
+  if (q == null) {
+    console.log("q is null");
+    console.log(typeof q);
+  }
+
+  // NaN (Not-a-Number), though it's actually closer to "a number that cannot be represented"
+  let r = 0/0
+  if (Number.isNaN(r)) {
+    console.log("r is NaN");
+    console.log(typeof r);
+  }
+
+  // JS is smart enough to coerce types in certain comparisons
+  let stringNum = "99";
+  if (stringNum == 99) {
+    console.log("stringNum is equal to 99 with type coercion");
+  }
+
+  if (1 == true) {
+    console.log("1 is equal to true with type coercion");
+  }
+
+  if (0 == false) {
+    console.log("0 is equal to false with type coercion");
+  }
+
+  if (undefined == null) {
+    console.log("undefined is equal to null with type coercion");
+  }
+
+  // Strict equality checks without type coercion
+  if (45 === "45") {
+    // This won't run
+  } else {
+    console.log("45 is not strictly equal to '45'");
+  }
+
+  console.log("3" + 4); // "34", string concatenation due to type coercion  
+  console.log(3 + "4"); // "34", string concatenation due to type coercion
+  console.log(3 + Number("4")); // 7, string is coerced to number for addition
+  console.log("3" * 4); // 12, string is coerced to number for multiplication
+  console.log("3" - 1); // 2, string is coerced to number for subtraction
+  console.log("3" / 1); // 3, string is coerced to number for division
+  console.log("3" % 2); // 1, string is coerced to number for modulus
+  console.log(1+2+" pizzas"); // "3 pizzas", number is coerced to string for concatenation
+  console.log("pizzas: " + 1 + 2); // "pizzas: 12", string concatenation due to type coercion
+
+
 }
 
 variables();
