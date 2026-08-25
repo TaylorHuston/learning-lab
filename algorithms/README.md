@@ -1,6 +1,6 @@
 # Algorithms & Data Structures
 
-Classic algorithm and data structure implementations, consolidated from multiple repos (2014-2015).
+Classic algorithm and data structure implementations
 
 ## Directory Structure
 
